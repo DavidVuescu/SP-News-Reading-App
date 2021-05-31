@@ -2,7 +2,7 @@
 
 ### Aplicația permite readactarea de articole de știri. 
 
-### :arrows_counterclockwise: Un articol conține titlul și conținutul acestuiareprezentând știrea în discuție. 
+### :arrows_counterclockwise: Un articol conține titlul și conținutul acestuiarep rezentând știrea în discuție. 
 
 ### :arrows_counterclockwise: Utilizatorul poate scrie noi articole sau poate vizualiza articole deja existente. 
 
