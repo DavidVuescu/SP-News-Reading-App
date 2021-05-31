@@ -1,12 +1,13 @@
 #ifndef STIRE_H
 #define STIRE_H
 #pragma once
-	
+
 #include <iostream>
 using namespace std;
 
 class Stire
 {
+    
     string title;
     string content;
 

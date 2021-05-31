@@ -2,10 +2,12 @@
 #define MENU_H
 
 #include <iostream>
+#include <fstream>
 #include <conio.h>
 
-#include "arrow.hpp"
 #include "Stire.hpp"
+#include "index.hpp"
+#include "arrow.hpp"
 
 using namespace std;
 
@@ -29,27 +31,27 @@ void menu()
             arrow(2,pos); cout<<" || CREATE NEW NEWS ARTICLE\n";
             arrow(3,pos); cout<<" || DELETE NEWS ARTICLE\n";
             arrow(4,pos); cout<<" || EXIT\n\n";
-            arrow(5,pos); cout<<"  ||  TESTING  ||\n";
+            // arrow(5,pos); cout<<"  ||  TESTING  ||\n";
 
             cout<<"=============================================\n";    //fluff
 
             key = getch();
 
 
-            // //Pos increment, controlling arrow movement
-            // if(key==80 && pos!=4) pos++;
-            //     else if (key==80 && pos==4) pos=1;         //upwards cycle
-            //         else if(key==72 && pos!=1) pos--;
-            //             else if(key==72 && pos==1) pos=4;  //downwards cycle
-            //                 else pos=pos;
-
-
-            //TEST Pos increment
-            if(key==80 && pos!=5) pos++;
-                else if (key==80 && pos==5) pos=1;         //upwards cycle
+            //Pos increment, controlling arrow movement
+            if(key==80 && pos!=4) pos++;
+                else if (key==80 && pos==4) pos=1;         //upwards cycle
                     else if(key==72 && pos!=1) pos--;
-                        else if(key==72 && pos==1) pos=5;  //downwards cycle
+                        else if(key==72 && pos==1) pos=4;  //downwards cycle
                             else pos=pos;
+
+
+            // //TEST Pos increment
+            // if(key==80 && pos!=5) pos++;
+            //     else if (key==80 && pos==5) pos=1;         //upwards cycle
+            //         else if(key==72 && pos!=1) pos--;
+            //             else if(key==72 && pos==1) pos=5;  //downwards cycle
+            //                 else pos=pos;
 
 
         }
@@ -58,7 +60,13 @@ void menu()
         {
             case 1:
             {
-                cout << "User selected option number " << pos;
+            // VIEW CURRENT NEWS OPTION
+                int nr;
+                string * titles;
+                titles = index(nr);
+                cout << nr << endl;
+
+
                 system("pause");
                 key=1;
                 break;
