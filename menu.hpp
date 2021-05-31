@@ -25,9 +25,9 @@ void menu()
             cout<<"=============================================\n";    //fluff
             cout<<"=============================================\n\n";  //fluff
 
-            arrow(1,pos); cout<<" || VIEW PLAYLISTS\n";
-            arrow(2,pos); cout<<" || CREATE NEW PLAYLIST\n";
-            arrow(3,pos); cout<<" || DELETE PLAYLIST\n";
+            arrow(1,pos); cout<<" || VIEW CURRENT NEWS\n";
+            arrow(2,pos); cout<<" || CREATE NEW NEWS ARTICLE\n";
+            arrow(3,pos); cout<<" || DELETE NEWS ARTICLE\n";
             arrow(4,pos); cout<<" || EXIT\n\n";
             arrow(5,pos); cout<<"  ||  TESTING  ||\n";
 

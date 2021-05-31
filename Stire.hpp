@@ -20,17 +20,12 @@ public:
 
     virtual ~Stire();
 
-    virtual ostream& afisare(ostream&)const;
-
     Stire& operator=(const Stire&);
 
     friend ostream& operator<<(ostream&, const Stire&);
 
     void MakeFav();
 
-protected:
-
-    void init(const string&, const string&);
 };
 
 
