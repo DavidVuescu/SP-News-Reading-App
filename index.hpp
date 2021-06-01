@@ -15,7 +15,7 @@ string * index (int &nr)
     fin.open ("News\\index.txt", ios::in);
     if(!fin.is_open())
     {
-        perror("Could not open index folder");
+        perror("Could not open index file");
     }
     else
     {

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <conio.h>
 
 #include "Stire.hpp"
@@ -64,8 +65,59 @@ void menu()
                 int nr;
                 string * titles;
                 titles = index(nr);
-                cout << nr << endl;
+        
+                int sub_key = 0;
+                int sub_pos = 0;
+                while(sub_key != 13)
+                {
+                    system("cls");
 
+                    cout<<"==== SELECT THE NEWS ARTICLE YOU WANT TO READ ====";
+                    cout<<endl<<endl;
+
+                    for (int i=0;i<nr;i++)
+                        {sub_arrow(i,sub_pos); cout<<titles[i+1]<<endl;}
+                    sub_key = getch();
+
+                    if(sub_key==80 && sub_pos!=(nr-1)) sub_pos++;
+                    else if (sub_key==80 && sub_pos==(nr-1)) sub_pos=1;    //upwards cycle
+                    else if(sub_key==72 && sub_pos!=0) sub_pos--;
+                    else if(sub_key==72 && sub_pos==0) sub_pos=(nr-1);     //downwards cycle
+                    else sub_pos=sub_pos;
+                }
+
+                string file_path;
+                file_path = "News\\";
+                file_path = file_path + titles[sub_pos+1];
+                file_path = file_path + ".txt";
+                // cout<<endl<<file_path; // test line
+
+                ifstream article;
+                article.open (file_path.c_str(), ios::in);
+                if(!article.is_open())
+                {
+                    perror("Could not open news article file");
+                }
+                else
+                {
+                    Stire useread_article;
+                    getline(article, useread_article.get_title());
+
+                    string buffer;
+                    string fat_buffer;
+                    while(getline(article, buffer))
+                    {
+                        fat_buffer = fat_buffer + "\n" + buffer;
+                    }
+                    useread_article.set_content(fat_buffer);
+
+                    system("cls");
+                    cout<<useread_article;
+                }
+                
+
+                delete titles;
+                article.close();
 
                 system("pause");
                 key=1;
