@@ -6,7 +6,10 @@
 using namespace std;
 
 
-
+Stire::Stire()
+{
+    this->fav = false;
+}
 Stire::Stire(string t, string c)
 {
     this->title = t;
@@ -32,7 +35,8 @@ Stire& Stire::operator=(const Stire& str)
 }
 ostream& operator<<(ostream& os, const Stire& str)
 {
-    os << "Titlu:" << str.title << "\n" << str.content << "\n\n";
+    os << "================ " << str.title << " ================ " << endl;
+    os << str.content << "\n\n";
     return os;
 }
 
@@ -42,4 +46,22 @@ void Stire::MakeFav()
 {
     if (this->fav == false) this->fav = true;
     else this->fav = false;
+}
+
+void Stire::set_title(string new_title)
+{
+    this->title = new_title;
+}
+void Stire::set_content(string new_content)
+{
+    this->content = new_content;
+}
+
+string& Stire::get_title()
+{
+    return title;
+}
+string& Stire::get_content()
+{
+    return content;
 }
