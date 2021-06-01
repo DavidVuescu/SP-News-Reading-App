@@ -35,7 +35,7 @@ Stire& Stire::operator=(const Stire& str)
 }
 ostream& operator<<(ostream& os, const Stire& str)
 {
-    os << "================ " << str.title << " ================ " << endl;
+    os << "===#================#=== " << str.title << " ===#================#=== " << endl;
     os << str.content << "\n\n";
     return os;
 }
@@ -48,20 +48,29 @@ void Stire::MakeFav()
     else this->fav = false;
 }
 
-void Stire::set_title(string new_title)
+void Stire::set_title(string title)
 {
-    this->title = new_title;
+    this->title = title;
 }
-void Stire::set_content(string new_content)
+void Stire::set_content(string content)
 {
-    this->content = new_content;
+    this->content = content;
 }
 
-string& Stire::get_title()
+string Stire::get_title()
 {
     return title;
 }
-string& Stire::get_content()
+string Stire::get_content()
+{
+    return content;
+}
+
+string& Stire::get_title_adress()
+{
+    return title;
+}
+string& Stire::get_content_adress()
 {
     return content;
 }

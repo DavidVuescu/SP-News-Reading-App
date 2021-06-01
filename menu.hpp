@@ -45,16 +45,6 @@ void menu()
                     else if(key==72 && pos!=1) pos--;
                         else if(key==72 && pos==1) pos=4;  //downwards cycle
                             else pos=pos;
-
-
-            // //TEST Pos increment
-            // if(key==80 && pos!=5) pos++;
-            //     else if (key==80 && pos==5) pos=1;         //upwards cycle
-            //         else if(key==72 && pos!=1) pos--;
-            //             else if(key==72 && pos==1) pos=5;  //downwards cycle
-            //                 else pos=pos;
-
-
         }
 
         switch(pos)
@@ -62,9 +52,9 @@ void menu()
             case 1:
             {
             // VIEW CURRENT NEWS OPTION
-                int nr;
-                string * titles;
-                titles = index(nr);
+                    int nr;
+                    string * titles;
+                    titles = index(nr);
         
                 int sub_key = 0;
                 int sub_pos = 0;
@@ -101,7 +91,7 @@ void menu()
                 else
                 {
                     Stire useread_article;
-                    getline(article, useread_article.get_title());
+                    getline(article, useread_article.get_title_adress());
 
                     string buffer;
                     string fat_buffer;
@@ -116,7 +106,7 @@ void menu()
                 }
                 
 
-                delete titles;
+                delete [] titles;
                 article.close();
 
                 system("pause");
@@ -125,7 +115,56 @@ void menu()
             }
             case 2:
             {
-                cout << "User selected option number " << pos;
+            // CREATE NEW NEWS ARTICLE OPTION
+                    int nr;
+                    string * titles;
+                    titles = index(nr);
+
+                    string new_title;
+                    string new_content;
+
+                cout << "Introduceti titlul stirii dumneavoastra: ";
+                getline(cin, new_title);
+
+                system("cls");
+                cout << "======================== " << new_title << " ========================\n";
+                cout << "Please write your new article: " << endl << endl;
+
+                int writers_block=0;
+                string buffer;
+                while(writers_block != 27)
+                {
+                    getline(cin, buffer);
+                    new_content += buffer + "\n";
+                    writers_block = getch();
+                }
+                Stire new_article;
+                new_article.set_title(new_title);
+                new_article.set_content(new_content);
+
+
+                ofstream index; index.open("News\\index.txt");
+                titles[nr+1] = new_title;
+                nr++;
+                index<<nr<<endl;
+                for(int i=1;i<=nr;i++)
+                {
+                    index<<titles[i]<<endl;
+                }
+                index.close();
+
+                string new_path;
+                new_path = "News\\";
+                new_path += titles[nr];
+                new_path += ".txt";
+                ofstream f_new_news;    f_new_news.open(new_path.c_str());
+                f_new_news<<new_article.get_title()<<endl;
+                f_new_news<<new_article.get_content();
+                f_new_news.close();
+
+           
+                delete [] titles;
+                
                 system("pause");
                 key=1;
                 break;
@@ -146,18 +185,7 @@ void menu()
                 break;
             }
             
-            case 5:
-            {
-                Stire test("test1", "test2");
-                cout << test;
-                test.MakeFav();
-                cout << "\n\n\n";
-                if (test.fav == 1) cout << test;
 
-                system("pause");
-                key=1;
-                break;
-            }
         }
     }
 }

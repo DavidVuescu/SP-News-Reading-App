@@ -33,9 +33,13 @@ public:
 
     void set_content(string);
 
-    string& get_title();
+    string get_title();
 
-    string& get_content();
+    string get_content();
+
+    string& get_title_adress();
+
+    string& get_content_adress();
 
 };
 

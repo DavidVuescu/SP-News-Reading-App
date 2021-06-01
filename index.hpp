@@ -24,7 +24,7 @@ string * index (int &nr)
             else if (nr >= 10 && nr < 100) fin.seekg(2);
                 else if (nr >= 100 && nr < 1000) fin.seekg(3);
 
-        string * titles = new string[nr+1];
+        string * titles = new string[nr+2];
         int i = 0;
         while (getline(fin, buffer))
         {
