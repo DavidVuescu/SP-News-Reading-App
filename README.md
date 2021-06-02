@@ -2,9 +2,9 @@
 
 ### Aplicația permite readactarea de articole de știri. 
 
-### :arrows_counterclockwise: Un articol conține titlul și conținutul acestuia reprezentând știrea în discuție. 
+### :heavy_check_mark: Un articol conține titlul și conținutul acestuia reprezentând știrea în discuție. 
 
-### :arrows_counterclockwise: Utilizatorul poate scrie noi articole sau poate vizualiza articole deja existente. 
+### :heavy_check_mark: Utilizatorul poate scrie noi articole sau poate vizualiza articole deja existente. 
 
 ### :arrows_counterclockwise: De asemenea, aplicația oferă utilizatorului posibilitatea de a filtra articolele în funcție de titlul acestora pentru a le vizualiza ulterior. 
 
