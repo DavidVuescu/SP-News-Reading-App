@@ -31,10 +31,9 @@ string * index (int &nr)
             titles[i] = buffer;
             i=i+1;
         }
+        fin.close();
         return titles;
     }
-
-    fin.close();
 }
 
 #endif

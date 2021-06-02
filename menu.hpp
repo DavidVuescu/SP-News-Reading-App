@@ -128,7 +128,7 @@ void menu()
 
                 system("cls");
                 cout << "======================== " << new_title << " ========================\n";
-                cout << "Please write your new article: " << endl << endl;
+                cout << "Please write your new article, press escape when you are done: " << endl << endl;
 
                 int writers_block=0;
                 string buffer;
