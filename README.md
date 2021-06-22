@@ -8,6 +8,6 @@
 
 ### :arrows_counterclockwise: De asemenea, aplicația oferă utilizatorului posibilitatea de a filtra articolele în funcție de titlul acestora pentru a le vizualiza ulterior. 
 
-### :arrows_counterclockwise: Utilizatorului îi este disponibilă salvarea anumitor articole într-o lista de favorite pentru vizualizarea ulterioară a acestora.
+### :heavy_check_mark: Utilizatorului îi este disponibilă salvarea anumitor articole într-o lista de favorite pentru vizualizarea ulterioară a acestora.
 
 > By: David Vuescu & Razvan Trasca

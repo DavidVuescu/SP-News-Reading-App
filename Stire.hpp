@@ -29,6 +29,8 @@ public:
 
     void MakeFav();
 
+    bool get_fav();
+
     void set_title(string);
 
     void set_content(string);

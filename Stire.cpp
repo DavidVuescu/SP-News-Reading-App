@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 
 #include "Stire.hpp"
 
@@ -35,7 +35,12 @@ Stire& Stire::operator=(const Stire& str)
 }
 ostream & operator << (ostream& os, const Stire str)
 {
-    os << "===#================#=== " << str.title << " ===#================#=== " << endl;
+    string::const_iterator it;
+
+    os << "===#================#=== "; 
+    for (it = str.title.begin()+1; it != str.title.end(); it++) cout<<*it;
+    os << " ===#================#=== " << endl;
+
     os << str.content << "\n\n";
     return os;
 }
@@ -44,8 +49,18 @@ ostream & operator << (ostream& os, const Stire str)
 
 void Stire::MakeFav()
 {
-    if (this->fav == false) this->fav = true;
-    else this->fav = false;
+    if (title[0]== '0') {
+        this->fav = true;
+        title[0]='1';
+    }
+    else if (title[0]== '1') {
+        this->fav = false;
+        title[0]='0';
+    }
+}
+bool Stire::get_fav() {
+    if (title[0] == '1') return 1;
+    return 0;
 }
 
 void Stire::set_title(string title)

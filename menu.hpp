@@ -4,11 +4,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 #include <conio.h>
 
 #include "Stire.hpp"
 #include "index.hpp"
 #include "arrow.hpp"
+#include "fav2class.hpp"
 
 using namespace std;
 
@@ -51,12 +53,12 @@ void menu()
             case 1:
             {
             // VIEW CURRENT NEWS OPTION
-                    int nr;
-                    string * titles;
+                    int nr;             //number of news articles
+                    string * titles;    //article titles vector
                     titles = index(nr);
         
-                int sub_key = 0;
-                int sub_pos = 0;
+                int sub_key = 0;    //key pressed in submenu
+                int sub_pos = 0;    //user selection in submenu
                 while(sub_key != 13)
                 {
                     system("cls");
@@ -75,13 +77,13 @@ void menu()
                     else sub_pos=sub_pos;
                 }
 
-                string file_path;
+                string file_path;   //path of selected news article
                 file_path = "News\\";
                 file_path = file_path + titles[sub_pos+1];
                 file_path = file_path + ".txt";
                 // cout<<endl<<file_path; // test line
 
-                ifstream open_article;
+                ifstream open_article;      //currently open article file
                 open_article.open (file_path.c_str(), ios::in);
                 if(!open_article.is_open())
                 {
@@ -89,7 +91,7 @@ void menu()
                 }
                 else
                 {
-                    Stire article_class;
+                    Stire article_class;    //currently open article class
                     getline(open_article, article_class.get_title_adress());
 
                     string buffer;
@@ -123,16 +125,28 @@ void menu()
                     switch (sub_pos)
                     {
                     case 0:
+                    {
                         article_class.MakeFav();
+                        // cout<<endl<<endl<<article_class.get_title()<<endl<<endl;
 
-                        cout<<"Your article has been added to favorites"<<endl;
+                        open_article.close();
+                        ofstream new_favourite; new_favourite.open(file_path.c_str());
+                        new_favourite<<article_class.get_title();
+                        new_favourite<<article_class.get_content()<<endl;
+                        new_favourite.close();
+
+                        if(article_class.fav==0) cout<<endl<<"Your article has been removed from favourites";
+                            else cout<<endl<<"Your article has been added to favorites"<<endl;
                         break;
                     }
+                    case 1:
+                        open_article.close();
+                    }
+                    
                 }
                 
 
                 delete [] titles;
-                open_article.close();
 
                 cout<<endl<<endl;
                 system("pause");
@@ -197,7 +211,21 @@ void menu()
             }
             case 3:
             {
-                cout << "User selected option number " << pos;
+            // CHECK FAVOURITE ARTICLES OPTION
+                    int nr;
+                    string * titles;
+                    titles = index(nr);
+                vector <Stire> Favorites;
+                int counter = 0;
+
+                classify(Favorites,titles,nr,counter);
+                if (counter) {
+                    system ("cls");
+                    for (int i=0;i<counter;i++) cout<<Favorites[i]<<endl;
+                }
+                else 
+                    cout<<"Sorry, but you have no favourite playlists"<<endl<<endl;
+
                 system("pause");
                 key=1;
                 break;
