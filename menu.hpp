@@ -228,6 +228,7 @@ void menu()
                 new_path += titles[nr];
                 new_path += ".txt";
                 ofstream f_new_news;    f_new_news.open(new_path.c_str());
+                f_new_news<<"0";
                 f_new_news<<new_article.get_title()<<endl;
                 f_new_news<<new_article.get_content();
                 f_new_news.close();
