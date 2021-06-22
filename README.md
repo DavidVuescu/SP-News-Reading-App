@@ -6,7 +6,7 @@
 
 ### :heavy_check_mark: Utilizatorul poate scrie noi articole sau poate vizualiza articole deja existente. 
 
-### :arrows_counterclockwise: De asemenea, aplicația oferă utilizatorului posibilitatea de a filtra articolele în funcție de titlul acestora pentru a le vizualiza ulterior. 
+### :heavy_check_mark: De asemenea, aplicația oferă utilizatorului posibilitatea de a filtra articolele în funcție de titlul acestora pentru a le vizualiza ulterior. 
 
 ### :heavy_check_mark: Utilizatorului îi este disponibilă salvarea anumitor articole într-o lista de favorite pentru vizualizarea ulterioară a acestora.
 
