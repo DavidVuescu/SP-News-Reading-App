@@ -59,6 +59,36 @@ void menu()
         
                 int sub_key = 0;    //key pressed in submenu
                 int sub_pos = 0;    //user selection in submenu
+
+                int sort_type;
+                do {
+                    cout<<endl<<"Please select the form of sorting you wish to have:"<<endl;
+                    cout<<"1. No Sorting"<<endl;
+                    cout<<"2. Alphabetical filter"<<endl;
+
+                    cout<<"Your method of choice: "; cin>>sort_type;
+                } while (sort_type!=1 && sort_type!=2);
+
+                if(sort_type==2 && nr>1) {
+                    string aux;
+                    if (nr==2) {
+                        if(titles[1]>titles[2]) {
+                            aux = titles[1];
+                            titles[1]=titles[2];
+                            titles[2]=aux;
+                        }
+                    }
+                    else {
+                        for(int i=1;i<=nr;i++)
+                            for(int j=i+1;j<=nr;j++) 
+                                if(titles[i]>titles[j]) {
+                                    aux = titles[i];
+                                    titles[i]=titles[j];
+                                    titles[j]=aux;
+                                }
+                    }
+                }
+
                 while(sub_key != 13)
                 {
                     system("cls");
@@ -103,7 +133,7 @@ void menu()
                     article_class.set_content(fat_buffer);
 
 
-                    // Submenu for continuing or favouriting articles
+                    // Submenu for returning to main or favouriting articles
                     int sub_key = 0;
                     int sub_pos = 1;
                     while (sub_key!=13)
@@ -113,7 +143,7 @@ void menu()
                         cout<<"       ";
                         sub_arrow(0,sub_pos); cout<<"STAR/UNSTAR";
                         cout<<"       ";
-                        sub_arrow(1,sub_pos); cout<<"CONTINUE";
+                        sub_arrow(1,sub_pos); cout<<"RETURN";
 
                         sub_key=getch();
                         if(sub_key==77 && sub_pos!=1) sub_pos++;
@@ -156,8 +186,8 @@ void menu()
             case 2:
             {
             // CREATE NEW NEWS ARTICLE OPTION
-                    int nr;
-                    string * titles;
+                    int nr;             //number of news articles
+                    string * titles;    //article titles vector
                     titles = index(nr);
 
                     string new_title;
@@ -212,11 +242,11 @@ void menu()
             case 3:
             {
             // CHECK FAVOURITE ARTICLES OPTION
-                    int nr;
-                    string * titles;
+                    int nr;                 //number of news articles
+                    string * titles;        //article titles vector
                     titles = index(nr);
-                vector <Stire> Favorites;
-                int counter = 0;
+                vector <Stire> Favorites;   //vector for favourite articles
+                int counter = 0;            //counter for favourite articles
 
                 classify(Favorites,titles,nr,counter);
                 if (counter) {
