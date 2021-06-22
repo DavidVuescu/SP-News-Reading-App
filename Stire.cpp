@@ -10,10 +10,10 @@ Stire::Stire()
 {
     this->fav = false;
 }
-Stire::Stire(string t, string c)
+Stire::Stire(string title, string content)
 {
-    this->title = t;
-    this->content = c;
+    this->title = title;
+    this->content = content;
 
     this->fav = false;
 }
@@ -33,7 +33,7 @@ Stire& Stire::operator=(const Stire& str)
     this->content = str.content;
     return *this;
 }
-ostream& operator<<(ostream& os, const Stire& str)
+ostream & operator << (ostream& os, const Stire str)
 {
     os << "===#================#=== " << str.title << " ===#================#=== " << endl;
     os << str.content << "\n\n";

@@ -25,7 +25,7 @@ public:
 
     Stire& operator=(const Stire&);
 
-    friend ostream& operator<<(ostream&, const Stire&);
+    friend ostream & operator << (ostream&, const Stire);
 
     void MakeFav();
 

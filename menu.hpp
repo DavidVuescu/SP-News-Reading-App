@@ -30,9 +30,8 @@ void menu()
 
             arrow(1,pos); cout<<" || VIEW CURRENT NEWS\n";
             arrow(2,pos); cout<<" || CREATE NEW NEWS ARTICLE\n";
-            arrow(3,pos); cout<<" || DELETE NEWS ARTICLE\n";
+            arrow(3,pos); cout<<" || VIEW FAVOURITE ARTICLES\n";
             arrow(4,pos); cout<<" || EXIT\n\n";
-            // arrow(5,pos); cout<<"  ||  TESTING  ||\n";
 
             cout<<"=============================================\n";    //fluff
 
@@ -82,33 +81,60 @@ void menu()
                 file_path = file_path + ".txt";
                 // cout<<endl<<file_path; // test line
 
-                ifstream article;
-                article.open (file_path.c_str(), ios::in);
-                if(!article.is_open())
+                ifstream open_article;
+                open_article.open (file_path.c_str(), ios::in);
+                if(!open_article.is_open())
                 {
                     perror("Could not open news article file");
                 }
                 else
                 {
-                    Stire useread_article;
-                    getline(article, useread_article.get_title_adress());
+                    Stire article_class;
+                    getline(open_article, article_class.get_title_adress());
 
                     string buffer;
                     string fat_buffer;
-                    while(getline(article, buffer))
+                    while(getline(open_article, buffer))
                     {
                         fat_buffer = fat_buffer + "\n" + buffer;
                     }
-                    useread_article.set_content(fat_buffer);
+                    article_class.set_content(fat_buffer);
 
-                    system("cls");
-                    cout<<useread_article;
+
+                    // Submenu for continuing or favouriting articles
+                    int sub_key = 0;
+                    int sub_pos = 1;
+                    while (sub_key!=13)
+                    {
+                        system("cls");
+                        cout<<article_class;
+                        cout<<"       ";
+                        sub_arrow(0,sub_pos); cout<<"STAR/UNSTAR";
+                        cout<<"       ";
+                        sub_arrow(1,sub_pos); cout<<"CONTINUE";
+
+                        sub_key=getch();
+                        if(sub_key==77 && sub_pos!=1) sub_pos++;
+                        else if (sub_key==77 && sub_pos==1) sub_pos=0;    //upwards cycle
+                        else if(sub_key==75 && sub_pos!=0) sub_pos--;
+                        else if(sub_key==75 && sub_pos==0) sub_pos=1;     //downwards cycle
+                        else sub_pos=sub_pos;
+                    }
+                    switch (sub_pos)
+                    {
+                    case 0:
+                        article_class.MakeFav();
+
+                        cout<<"Your article has been added to favorites"<<endl;
+                        break;
+                    }
                 }
                 
 
                 delete [] titles;
-                article.close();
+                open_article.close();
 
+                cout<<endl<<endl;
                 system("pause");
                 key=1;
                 break;
